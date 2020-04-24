@@ -1,0 +1,5 @@
+{
+  "publishedAt": "24th Apr 2020",
+  "title": "new",
+  "content": "this is the content\n\n```csharp\npublic class MediaItemDataModel : EntityIdentity\n{\n}\n \npublic class MediaItemRepository : IReadOnlyEntityRepository\n{\n    public Task GetById(string id)\n    {\n        return Task.FromResult(new MediaItemDataModel());\n    }\n \n    public Task<IQueryable<MediaItemDataModel>> GetData()\n    {\n        var list = new List<MediaItemDataModel>();\n        return Task.FromResult<IQueryable<MediaItemDataModel>>(list.AsQueryable());\n    }\n}\n```"
+}
