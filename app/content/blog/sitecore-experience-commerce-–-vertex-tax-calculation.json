@@ -1,0 +1,6 @@
+{
+  "publishedAt": "5th Nov 2019",
+  "title": "Sitecore Experience Commerce – Vertex tax calculation",
+  "content": "Before I started with this functionality I thought it would be a very difficult one to deal with. Lucky me figured out that wasn’t the case.\n\nThe price calculation of the cart in Sitecore Experience Commerce is handled by actually just two pipelines, ICalculateCartPipeline and ICalculateCartLinePipeline.\\\nIn these pipelines you send all the cart information, including the merchant/warehouse and customer address, to Vertex which will return the tax calculation breakdown. All you have to do with that information is add it to the cart as a CartAdjustment with the name “TaxFee”.\\\nMake sure you disable the OOTB tax calculation by either removing it from the same pipelines or setting the tax percentage to 0% in the configuration.\n\nNext to that Vertex requires you to create the order in Vertex as well after payment. To do this we extend the ReleasedOrdersMinion with an extra block to register the order at Vertex.\n\nFind the full example at GitHub:\\\n<https://github.com/GuidovTricht/Sitecore.Commerce.Plugin.Pricing.Vertex>",
+  "seoDescription": "Find out how to implement the Vertex Tax Engine for Sitecore Experience Commerce 9."
+}
