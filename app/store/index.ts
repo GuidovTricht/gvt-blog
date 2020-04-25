@@ -34,7 +34,9 @@ export const actions: Actions<State, State> = {
   async GET_POSTS_LIST({ commit }): Promise<void | Error> {
     // Use webpack to search the blog directory matching .json files
     const context = await require.context('@/content/blog/', false, /\.json$/);
-    const posts = await getContent({ context, prefix: 'blog' });
+    const posts = (await getContent({ context, prefix: 'blog' })).sort(
+      (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+    );
     commit('SET_POSTS', posts);
   },
 

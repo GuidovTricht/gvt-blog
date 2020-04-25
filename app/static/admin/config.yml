@@ -62,7 +62,7 @@ collections:
     sort: 'published_at:desc'
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: 'Published At', name: publishedAt, widget: date, format: 'Do MMM YYYY' }
+      - { label: 'Published At', name: publishedAt, widget: date, format: 'MM-DD-YYYY' }
       - { label: Content, name: content, widget: markdown }
       - { label: 'Featured Image', name: featuredImage, widget: image, required: false }
       - { label: 'SEO Description', name: seoDescription, widget: text, required: false }
