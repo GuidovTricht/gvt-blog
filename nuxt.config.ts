@@ -36,6 +36,10 @@ const nuxtConfig: Configuration = {
         rel: 'preconnect',
         href: 'https://d33wubrfki0l68.cloudfront.net',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Oswald&display=swap',
+      },
     ],
   },
 

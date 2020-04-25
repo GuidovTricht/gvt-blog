@@ -1,8 +1,14 @@
 <template>
   <header class="flex items-center py-4 md:py-8">
-    <div class="header__logo">
+    <!-- <div class="header__logo">
       <nuxt-link to="/">
         <img :src="logo" alt="Logo" />
+      </nuxt-link>
+    </div> -->
+
+    <div class="header__title text-center">
+      <nuxt-link to="/">
+        <span class="text-lg md:text-xl lg:text-4xl xl:text-6xl">Guido van Tricht</span>
       </nuxt-link>
     </div>
 
