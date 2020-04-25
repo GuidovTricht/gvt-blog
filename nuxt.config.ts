@@ -30,7 +30,12 @@ const nuxtConfig: Configuration = {
         content: settings.seoMetaImage,
       },
     ],
-    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js', defer: true }],
+    script: [
+      { 
+        src: 'https://identity.netlify.com/v1/netlify-identity-widget.js', 
+        defer: true 
+      },
+    ],
     link: [
       {
         rel: 'preconnect',
@@ -53,7 +58,7 @@ const nuxtConfig: Configuration = {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/main.scss'],
+  css: ['@/assets/css/main.scss', '@/assets/css/highlight/vs.css'],
 
   styleResources: {
     scss: ['~assets/css/_variables.scss', '~assets/css/_mixins.scss'],
@@ -97,6 +102,16 @@ const nuxtConfig: Configuration = {
 
     // Enable some language-neutral replacement + quotes beautification
     typographer: true,
+
+    highlight: function(str, lang) {
+      const hljs = require('highlight.js');
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value
+        } catch (__) {}
+      }
+      return '' // use external default escaping
+    },
   },
 
   workbox: {
