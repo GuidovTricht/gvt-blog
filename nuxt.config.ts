@@ -1,6 +1,6 @@
 import { Configuration } from '@nuxt/types';
 import fg from 'fast-glob';
-import { getFeed } from './app/store/feed';
+import { getFeedPosts } from './app/store/feed';
 import settings from './app/content/settings/general.json';
 import manifest from './app/content/settings/manifest.json';
 
@@ -107,14 +107,30 @@ const nuxtConfig: Configuration = {
   feed: [
     // A default feed configuration object
     {
-      path: '/feed.xml', // The route to your feed.
+      path: '/feed', // The route to your feed.
       async create(feed) {
-        feed = getFeed(feed);
-      }, // The create function (see below)
+        feed.options = {
+          title: 'Guido van Tricht',
+          link: 'https://guidovtricht.nl/',
+          description: '',
+          generator: null,
+          language: 'en-US',
+        };
+        const posts = getFeedPosts();
+        posts.forEach(post => {
+          feed.addItem({
+            title: post.newTitle,
+            date: new Date(post.publishedAt),
+            description: post.excerpt,
+            id: post.url,
+            link: post.url,
+            content: post.content,
+          });
+        });
+      },
       cacheTime: 1000 * 60 * 15, // How long should the feed be cached
       type: 'rss2', // Can be: rss2, atom1, json1
-      data: ['Some additional data'] // Will be passed as 2nd argument to `create` function
-    }
+    },
   ],
 
   markdownit: {
@@ -156,16 +172,6 @@ const nuxtConfig: Configuration = {
       iconSrc: `app/static${settings.icon}`,
     },
   },
-
-  // feed: [
-  //   {
-  //     path: '/feed.xml', // The route to your feed.
-  //     async rssFeed(feed) {}, // The create function (see below)
-  //     cacheTime: 1000 * 60 * 15, // How long should the feed be cached
-  //     type: 'rss2', // Can be: rss2, atom1, json1
-  //     data: ['Some additional data'], // Will be passed as 2nd argument to `create` function
-  //   },
-  // ],
 
   sitemap: {
     hostname: "https://blog.guidovtricht.nl",
@@ -249,6 +255,9 @@ const nuxtConfig: Configuration = {
     // Extend webpack config
     extend(config, { isDev }): void {
       config.devtool = isDev ? 'eval-source-map' : false;
+      config.node = {
+        fs: 'empty',
+      };
     },
   },
 };

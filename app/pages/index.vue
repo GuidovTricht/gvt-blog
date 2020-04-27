@@ -1,11 +1,11 @@
 <template>
   <section class="blog">
-    <!-- <div class="py-8 md:py-16 text-center">
-      <h1 class="text-lg md:text-xl lg:text-4xl xl:text-6xl">Guido van Tricht</h1>
-      <h2 class="text-base md:text-lg lg:text-xl xl:text-2xl">
+    <div class="py-8 md:py-16 text-center">
+      <h1 class="text-lg md:text-xl lg:text-4xl xl:text-6xl">Blog</h1>
+      <!-- <h2 class="text-base md:text-lg lg:text-xl xl:text-2xl">
         Slow-carb messenger bag mlkshk fingerstache four dollar toast.
-      </h2>
-    </div> -->
+      </h2> -->
+    </div>
 
     <div class="flex flex-wrap md:-mx-4 pb-20">
       <div v-for="(post, index) in posts" :key="index" class="w-full md:w-1/2 my-4 md:px-4">
