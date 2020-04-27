@@ -1,8 +1,10 @@
 @import 'markdown';
+@import 'highlight-vs';
 
 body {
   @apply antialiased;
   @apply subpixel-antialiased;
+  overflow-x: hidden;
 }
 
 .main {

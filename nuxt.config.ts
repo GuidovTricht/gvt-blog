@@ -58,7 +58,7 @@ const nuxtConfig: Configuration = {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/main.scss', '@/assets/css/highlight/vs.css'],
+  css: ['~assets/css/main.scss'],
 
   styleResources: {
     scss: ['~assets/css/_variables.scss', '~assets/css/_mixins.scss'],
@@ -86,7 +86,8 @@ const nuxtConfig: Configuration = {
   modules: ['@nuxtjs/pwa', '@nuxtjs/style-resources', '@nuxtjs/markdownit'],
 
   purgeCSS: {
-    whitelist: [/.*-(enter|enter-active|enter-to|leave|leave-active|leave-to)/],
+    whitelist: [/.*/],
+    enabled: false
   },
 
   markdownit: {
