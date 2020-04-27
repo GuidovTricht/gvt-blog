@@ -1,5 +1,6 @@
 import { Configuration } from '@nuxt/types';
 import fg from 'fast-glob';
+import { getFeed } from './app/store/feed';
 import settings from './app/content/settings/general.json';
 import manifest from './app/content/settings/manifest.json';
 
@@ -31,9 +32,9 @@ const nuxtConfig: Configuration = {
       },
     ],
     script: [
-      { 
-        src: 'https://identity.netlify.com/v1/netlify-identity-widget.js', 
-        defer: true 
+      {
+        src: 'https://identity.netlify.com/v1/netlify-identity-widget.js',
+        defer: true,
       },
     ],
     link: [
@@ -83,12 +84,38 @@ const nuxtConfig: Configuration = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa', '@nuxtjs/style-resources', '@nuxtjs/markdownit'],
+  modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/markdownit',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    '@nuxtjs/feed'
+  ],
 
   purgeCSS: {
     whitelist: [/.*/],
-    enabled: false
+    enabled: false,
   },
+
+  robots: {
+    UserAgent: '*',
+    Disallow: '',
+    SiteMap: '/sitemap.xml'
+  },
+
+  feed: [
+    // A default feed configuration object
+    {
+      path: '/feed.xml', // The route to your feed.
+      async create(feed) {
+        feed = getFeed(feed);
+      }, // The create function (see below)
+      cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+      type: 'rss2', // Can be: rss2, atom1, json1
+      data: ['Some additional data'] // Will be passed as 2nd argument to `create` function
+    }
+  ],
 
   markdownit: {
     preset: 'default',
@@ -108,10 +135,10 @@ const nuxtConfig: Configuration = {
       const hljs = require('highlight.js');
       if (lang && hljs.getLanguage(lang)) {
         try {
-          return hljs.highlight(lang, str).value
+          return hljs.highlight(lang, str).value;
         } catch (__) {}
       }
-      return '' // use external default escaping
+      return ''; // use external default escaping
     },
   },
 
@@ -128,6 +155,22 @@ const nuxtConfig: Configuration = {
     icon: {
       iconSrc: `app/static${settings.icon}`,
     },
+  },
+
+  // feed: [
+  //   {
+  //     path: '/feed.xml', // The route to your feed.
+  //     async rssFeed(feed) {}, // The create function (see below)
+  //     cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+  //     type: 'rss2', // Can be: rss2, atom1, json1
+  //     data: ['Some additional data'], // Will be passed as 2nd argument to `create` function
+  //   },
+  // ],
+
+  sitemap: {
+    hostname: "https://blog.guidovtricht.nl",
+    gzip: true,
+    exclude: ["/secret", "/admin/**"]
   },
 
   manifest: {
