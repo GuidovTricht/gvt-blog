@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/css/vs.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -41,8 +41,22 @@ export default {
    */
   modules: [
     // Doc: https://bootstrap-vue.js.org
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/markdownit'
   ],
+
+  markdownit: {
+    injected: true,
+    highlight: function(str, lang) {
+      const hljs = require('highlight.js');
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value
+        } catch (__) {}
+      }
+      return '' // use external default escaping
+    }
+  },
   /*
    ** Build configuration
    */
