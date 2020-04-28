@@ -1,20 +1,22 @@
 <template>
-  <div
-    class="w-full bg-gray-200 h-2 relative overflow-hidden"
-    :class="[{ 'rounded-full': rounded }]"
-  >
-    <div
-      class="h-full progressbar"
-      :class="[`bg-${color}-500`, { 'rounded-full': rounded }]"
-      role="progressbar"
-      :style="{ width: `${percentage}%` }"
-      :aria-valuenow="percentage"
-      aria-valuemin="0"
-      aria-valuemax="100"
-    >
-      <span class="flex items-center h-full">
-        <slot></slot>
-      </span>
+  <div class="w-full h-full">
+    <div>
+      <p class="text-xl leading-tight">{{ title }}</p>
+    </div>
+    <div class="w-full bg-gray-200 overflow-hidden" :class="[{ 'rounded-full': rounded }]">
+      <div
+        class="h-full progressbar"
+        :class="[`bg-${color}-500`, { 'rounded-full': rounded }]"
+        role="progressbar"
+        :style="{ width: `${percentage}%` }"
+        :aria-valuenow="percentage"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <span class="flex items-center h-full">
+          <slot></slot>
+        </span>
+      </div>
     </div>
   </div>
 </template>
