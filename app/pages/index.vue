@@ -7,6 +7,10 @@
       </h2> -->
     </div>
 
+    <progress-bar :percentage="46" :rounded="true" class="mx-2 mb-2 h-5" title="Sitecore">
+      <span class="text-xs text-white w-full flex justify-end pr-2">46%</span>
+    </progress-bar>
+
     <div class="flex flex-wrap md:-mx-4 pb-20">
       <div v-for="(post, index) in posts" :key="index" class="w-full md:w-1/2 my-4 md:px-4">
         <div class="post">
@@ -34,8 +38,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { MetaInfo } from 'vue-meta';
+import ProgressBar from '@/components/ProgressBar.vue';
 
 @Component({
+  components: {
+    ProgressBar,
+  },
   head(): MetaInfo {
     return {
       title: 'Blog',
