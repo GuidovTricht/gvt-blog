@@ -174,9 +174,9 @@ const nuxtConfig: Configuration = {
   },
 
   sitemap: {
-    hostname: "https://blog.guidovtricht.nl",
+    hostname: "https://guidovtricht.nl",
     gzip: true,
-    exclude: ["/secret", "/admin/**"]
+    exclude: ['/secret', '/admin/**'],
   },
 
   manifest: {
