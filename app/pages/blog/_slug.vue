@@ -36,8 +36,18 @@ import { MetaInfo } from 'vue-meta';
       title: this.post.title,
       meta: [
         {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.post.title,
+        },
+        {
           hid: 'description',
           name: 'description',
+          content: this.post.seoDescription,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
           content: this.post.seoDescription,
         },
         {

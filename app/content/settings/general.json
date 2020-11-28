@@ -1,6 +1,7 @@
 {
   "title": "Home",
   "titleTemplate": "| Guido van Tricht",
+  "author": "Guido van Tricht",
   "welcomeText": "",
   "logo": "/images/uploads/logo.svg",
   "icon": "/images/uploads/logo.png",

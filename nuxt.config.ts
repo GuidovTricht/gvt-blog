@@ -16,6 +16,11 @@ const nuxtConfig: Configuration = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: settings.seoDescription },
       {
+        hid: 'author',
+        property: 'author',
+        content: settings.author,
+      },
+      {
         hid: 'og:title',
         property: 'og:title',
         content: `${settings.title} ${settings.titleTemplate}`,
