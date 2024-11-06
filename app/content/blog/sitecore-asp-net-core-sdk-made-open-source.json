@@ -1,0 +1,5 @@
+{
+  "publishedAt": "11-06-2024",
+  "title": "Sitecore ASP.NET Core SDK made open-source",
+  "content": "A﻿ couple of weeks ago, Sitecore made the .NET Core variant of their Headless Rendering SDK open-source on GitHub. If you haven't seen it yet, check it out here: <https://github.com/Sitecore/ASP.NET-Core-SDK>\n\nW﻿ith the release (or the planning of) this open-source SDK, the old Headless Rendering SDKs have not been updated past version 21.x while JSS has received recent updates specifically for Sitecore 10.4.\\\nT﻿his will most likely mean that at some point everyone will have to switch to the new SDKs when breaking changes occur in future Sitecore releases.\n\nT﻿he open-source version of this SDK does come with some improvements compared to the old version, which I will highlight in the rest of this article.\n\n## M﻿ultisite support"
+}
